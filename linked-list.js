@@ -38,6 +38,22 @@ class LinkedList {
         }
     }
 
+    find(value) {
+        if (!this.head) return null;
+
+        let currNode = this.head;
+
+        while (currNode) {
+            if (currNode.value === value) {
+                return currNode;
+            }
+
+            currNode = currNode.next;
+        }
+
+        return null;
+    }
+
     toArray() {
         let elementsArr = [];
         let currNode = this.head;
@@ -86,5 +102,7 @@ myLinkedList.prepend("First value");
 console.log(myLinkedList.toArray());
 
 myLinkedList.remove("Hey");
+myLinkedList.remove(true);
 
 console.log(myLinkedList.toArray());
+console.log(myLinkedList.find(1));
