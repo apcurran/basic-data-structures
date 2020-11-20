@@ -66,19 +66,7 @@ class LinkedList {
 
         return null;
     }
-
-    toArray() {
-        let elementsArr = [];
-        let currNode = this.head;
-
-        while (currNode) {
-            elementsArr.push(currNode);
-            currNode = currNode.next;
-        }
-
-        return elementsArr;
-    }
-
+    
     remove(value) {
         if (!this.head) return null;
 
@@ -102,6 +90,18 @@ class LinkedList {
         if (this.tail.value === value) {
             this.tail = currNode;
         }
+    }
+
+    toArray() {
+        let elementsArr = [];
+        let currNode = this.head;
+
+        while (currNode) {
+            elementsArr.push(currNode);
+            currNode = currNode.next;
+        }
+
+        return elementsArr;
     }
 }
 
