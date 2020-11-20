@@ -49,6 +49,31 @@ class LinkedList {
 
         return elementsArr;
     }
+
+    remove(value) {
+        if (!this.head) return null;
+
+        // To delete the first node in the list
+        while (this.head && this.head.value === value) {
+            this.head = this.head.next;
+        }
+
+        let currNode = this.head;
+
+        while (currNode.next) {
+            if (currNode.next.value === value) {
+                // Now delete by orphaning this node (it will now be garbage collected)
+                currNode.next = currNode.next.next;
+            } else {
+                // Otherwise keep iterating
+                currNode = currNode.next;
+            }
+        }
+
+        if (this.tail.value === value) {
+            this.tail = currNode;
+        }
+    }
 }
 
 const myLinkedList = new LinkedList();
@@ -57,5 +82,9 @@ myLinkedList.append(1);
 myLinkedList.append("Hey");
 myLinkedList.append(true);
 myLinkedList.prepend("First value");
+
+console.log(myLinkedList.toArray());
+
+myLinkedList.remove("Hey");
 
 console.log(myLinkedList.toArray());
