@@ -38,6 +38,19 @@ class LinkedList {
         }
     }
 
+    insertAfter(value, afterValue) {
+        const existingNode = this.find(afterValue);
+
+        if (existingNode) {
+            const newNode = {
+                value: value,
+                next: existingNode.next
+            };
+
+            existingNode.next = newNode;
+        }
+    }
+
     find(value) {
         if (!this.head) return null;
 
@@ -106,3 +119,7 @@ myLinkedList.remove(true);
 
 console.log(myLinkedList.toArray());
 console.log(myLinkedList.find(1));
+
+myLinkedList.insertAfter("New value after 1", 1);
+
+console.log(myLinkedList.toArray());
